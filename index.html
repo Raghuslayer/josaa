@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoSAA 2025 - Counselling Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for the main content area */
+        .scrollable-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollable-content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-4 flex items-center justify-between shadow-md">
+        <div class="flex items-center space-x-4">
+            <img src="https://placehold.co/60x60/333/FFF?text=JoSAA" alt="JoSAA Logo" class="rounded-full">
+            <div>
+                <h1 class="text-xl font-bold">Joint Seat Allocation Authority 2025</h1>
+                <p class="text-sm">IITS, NITS, IIEST, IIITs and Other-GFTIs for the Academic Year 2025-26</p>
+            </div>
+        </div>
+        <div class="flex items-center space-x-2">
+            <img src="https://placehold.co/40x40/007bff/FFF?text=C" alt="Counseling Services Logo" class="rounded-full">
+            <span class="text-sm">Counselling Services</span>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-600 text-white p-3 shadow-md flex justify-between items-center">
+        <div class="flex space-x-6 ml-4">
+            <a id="home-link" href="javascript:void(0)" class="hover:underline">Home</a>
+            <a href="#" class="hover:underline">Contact Us</a>
+        </div>
+        <div class="mr-4">
+            <span class="text-sm">Welcome KOPPADA RAGHURAM -</span>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="bg-gray-900 text-white w-64 p-4 shadow-lg flex-shrink-0">
+            <div class="mb-6">
+                <img id="user-avatar" src="https://res.cloudinary.com/dpragculd/image/upload/v1750053579/Screenshot_2025-06-16_112922_mym8yd.png" alt="User Avatar" class="rounded-full mx-auto mb-2">
+                <h2 class="text-lg font-semibold text-center">KOPPADA RAGHURAM</h2>
+                <p class="text-xs text-center text-gray-400">JEE(Main) AppNo : 250310124114</p>
+            </div>
+
+            <nav>
+                <h3 class="text-gray-400 text-sm mb-2 uppercase">Available Services</h3>
+                <ul>
+                    <li class="mb-2">
+                        <a href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors">
+                            <span class="mr-2">→</span> Candidate Profile
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors pointer-events-none opacity-50">
+                            <span class="mr-2">→</span> Choices Available
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors pointer-events-none opacity-50">
+                            <span class="mr-2">→</span> Choice Filling
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors pointer-events-none opacity-50">
+                            <span class="mr-2">→</span> Choice Locking
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors">
+                            <span class="mr-2">→</span> Print Locked Choice(s) Letter
+                        </a>
+                    </li>
+
+                    <h3 class="text-gray-400 text-sm mb-2 uppercase">Seat Allotment</h3>
+                    <li class="mb-4">
+                        <a id="seat-allotment-result-link" href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors">
+                            <span class="mr-2">→</span> Seat Allotment Result <span class="ml-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">New</span>
+                        </a>
+                    </li>
+
+                    <h3 class="text-gray-400 text-sm mb-2 uppercase">System Generated Letters</h3>
+                    <li class="mb-4">
+                        <a href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors">
+                            <span class="mr-2">→</span> View/Download Letters
+                        </a>
+                    </li>
+
+                    <h3 class="text-gray-400 text-sm mb-2 uppercase">View Contact Details</h3>
+                    <li>
+                        <a id="view-contact-details-link" href="javascript:void(0)" class="flex items-center p-2 rounded-md hover:bg-gray-700 transition-colors">
+                            <span class="mr-2">→</span> View Contact Details
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main id="main-content-area" class="flex-1 p-6 bg-gray-100 overflow-y-auto scrollable-content">
+            <!-- Initial content goes here -->
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <p class="text-sm text-gray-600">Your current session will be expired within : <span id="session-expiration" class="font-semibold text-red-500">19:27 minute</span></p>
+                    <p class="text-sm text-gray-600">JEE (Main) Application Number : 250310124114</p>
+                </div>
+
+                <h2 class="text-lg font-semibold mb-4 border-b-2 pb-2">Current Choice Filling & Locking Status</h2>
+
+                <div class="flex justify-end text-sm text-gray-600 mb-4">
+                    Date & Time : <span id="realtime-date-time"></span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-blue-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                        <p class="text-sm text-gray-600">Total Available Choices</p>
+                        <p class="text-3xl font-bold text-blue-800">627</p>
+                        <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 627</p>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                        <p class="text-sm text-gray-600">Filled Choices</p>
+                        <p class="text-3xl font-bold text-green-800">227</p>
+                        <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 227</p>
+                    </div>
+                    <div class="bg-red-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                        <p class="text-sm text-gray-600">Unfilled Choices</p>
+                        <p class="text-3xl font-bold text-red-800">400</p>
+                        <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 400</p>
+                    </div>
+                    <div class="bg-gray-300 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                        <p class="text-sm text-gray-600">Choice Locking Status</p>
+                        <p class="text-xl font-bold text-gray-800 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> System Locked</p>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 p-4 rounded-lg flex items-start space-x-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <div>
+                        <p class="font-semibold text-blue-700">Important Advice :</p>
+                        <p class="text-sm text-blue-700">You are advised to fill up only those choices which you would indeed like to accept and join, if offered. Mindful choice filling will help you to avoid any unnecessary hassle of withdrawing from JoSAA 2025. This will also help the system to reduce seat vacancies.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainContentArea = document.getElementById('main-content-area');
+            const seatAllotmentLink = document.getElementById('seat-allotment-result-link');
+            const viewContactDetailsLink = document.getElementById('view-contact-details-link');
+            const homeLink = document.getElementById('home-link'); // Get the Home link
+
+            // Function to display the initial dashboard content (re-renders elements that need real-time updates)
+            const displayInitialDashboard = () => {
+                mainContentArea.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-sm text-gray-600">Your current session will be expired within : <span id="session-expiration" class="font-semibold text-red-500"></span></p>
+                            <p class="text-sm text-gray-600">JEE (Main) Application Number : 250310124114</p>
+                        </div>
+
+                        <h2 class="text-lg font-semibold mb-4 border-b-2 pb-2">Current Choice Filling & Locking Status</h2>
+
+                        <div class="flex justify-end text-sm text-gray-600 mb-4">
+                            Date & Time : <span id="realtime-date-time"></span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                            <div class="bg-blue-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                <p class="text-sm text-gray-600">Total Available Choices</p>
+                                <p class="text-3xl font-bold text-blue-800">627</p>
+                                <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 627</p>
+                            </div>
+                            <div class="bg-green-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                <p class="text-sm text-gray-600">Filled Choices</p>
+                                <p class="text-3xl font-bold text-green-800">227</p>
+                                <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 227</p>
+                            </div>
+                            <div class="bg-red-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                <p class="text-sm text-gray-600">Unfilled Choices</p>
+                                <p class="text-3xl font-bold text-red-800">400</p>
+                                <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 400</p>
+                            </div>
+                            <div class="bg-gray-300 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                <p class="text-sm text-gray-600">Choice Locking Status</p>
+                                <p class="text-xl font-bold text-gray-800 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> System Locked</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-4 rounded-lg flex items-start space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            <div>
+                                <p class="font-semibold text-blue-700">Important Advice :</p>
+                                <p class="text-sm text-blue-700">You are advised to fill up only those choices which you would indeed like to accept and join, if offered. Mindful choice filling will help you to avoid any unnecessary hassle of withdrawing from JoSAA 2025. This will also help the system to reduce seat vacancies.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                // Re-get the elements after innerHTML update and start updates
+                const newRealtimeDateTimeSpan = mainContentArea.querySelector('#realtime-date-time');
+                const newSessionExpirationSpan = mainContentArea.querySelector('#session-expiration');
+                updateRealtimeClock(newRealtimeDateTimeSpan);
+                startSessionCountdown(newSessionExpirationSpan);
+            };
+
+
+            // Function to display seat allotment result content
+            const displaySeatAllotmentResult = () => {
+                mainContentArea.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-xl font-bold mb-4">Seat Allotment Result</h2>
+                        <p class="text-lg">Congratulations! You have been provisionally allotted a seat in:</p>
+                        <p class="text-2xl font-semibold text-blue-700 mt-2">NATIONAL INSTITUTE OF TECHNOLOGY MIZORAM</p>
+                        <p class="text-xl font-medium text-gray-800">(ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)</p>
+                        <div class="mt-6 p-4 bg-blue-50 rounded-md">
+                            <p class="text-sm text-blue-700">Further instructions regarding document verification and admission will be shared soon.</p>
+                        </div>
+                    </div>
+                `;
+            };
+
+            // Function to display contact details
+            const displayContactDetails = () => {
+                mainContentArea.innerHTML = `
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-xl font-bold mb-4">Contact Details</h2>
+                        <div class="space-y-3">
+                            <p><span class="font-semibold text-gray-700">NAME:</span> KOPPADA RAGHURAM</p>
+                            <p><span class="font-semibold text-gray-700">MOTHER:</span> KOPPADA GOWRI PARVATHI</p>
+                            <p><span class="font-semibold text-gray-700">FATHER:</span> KOPPADA SRINIVASARAO</p>
+                            <p><span class="font-semibold text-gray-700">GMAIL:</span> RAGXXXXXX@GMAIL.COM</p>
+                            <p><span class="font-semibold text-gray-700">MOBILE NO:</span> 95XXXXXX62</p>
+                            <p><span class="font-semibold text-gray-700">ADDRESS:</span> PEDAPALLEVA PALEM, MOGALTHUR, WEST GODAVARI, 534281</p>
+                        </div>
+                    </div>
+                `;
+            };
+
+            // Event Listeners for sidebar links
+            seatAllotmentLink.addEventListener('click', displaySeatAllotmentResult);
+            viewContactDetailsLink.addEventListener('click', displayContactDetails);
+            homeLink.addEventListener('click', displayInitialDashboard); // Event listener for Home link
+
+
+            // Real-time Date and Time function
+            const updateRealtimeClock = (element) => {
+                if (element) { // Check if element exists before updating
+                    const now = new Date();
+                    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                    element.textContent = now.toLocaleDateString('en-US', options);
+                }
+            };
+
+            // Session Expiration Countdown function
+            let sessionRemainingSeconds = 19 * 60 + 27; // Initial 19 minutes 27 seconds
+
+            const startSessionCountdown = (element) => {
+                if (!element) return; // Exit if element is not found
+
+                // Clear any existing interval to prevent multiple timers running
+                if (element.countdownIntervalId) {
+                    clearInterval(element.countdownIntervalId);
+                }
+
+                const countdownInterval = setInterval(() => {
+                    if (sessionRemainingSeconds <= 0) {
+                        element.textContent = "Expired!";
+                        clearInterval(countdownInterval);
+                        element.countdownIntervalId = null; // Clear the stored ID
+                        return;
+                    }
+
+                    sessionRemainingSeconds--;
+                    const minutes = Math.floor(sessionRemainingSeconds / 60);
+                    const seconds = sessionRemainingSeconds % 60;
+                    element.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds} minute${minutes === 0 && seconds === 1 ? '' : 's'}`;
+                }, 1000);
+                element.countdownIntervalId = countdownInterval; // Store interval ID on the element
+            };
+
+            // Initial setup for the dashboard content
+            displayInitialDashboard();
+
+            // Set up interval for the clock initially. This interval will keep running, but it relies on finding the span element.
+            // If the dashboard is reloaded, the span is re-created, and the new `updateRealtimeClock` call handles it.
+            // For session countdown, `startSessionCountdown` handles clearing previous intervals.
+            setInterval(() => {
+                const currentRealtimeSpan = document.getElementById('realtime-date-time');
+                updateRealtimeClock(currentRealtimeSpan);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
