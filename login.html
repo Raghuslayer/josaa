@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JoSAA 2025 - Registered Candidate Sign in</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Prevent scrollbars on initial login page */
+        }
+        /* Custom styles for the security pin refresh icon */
+        .refresh-icon {
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .refresh-icon:hover {
+            transform: rotate(30deg);
+        }
+        /* Styles for custom alert box */
+        .custom-alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .custom-alert.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex min-h-screen">
+
+    <!-- Custom Alert Box -->
+    <div id="custom-alert" class="custom-alert"></div>
+
+    <!-- Left Section: Logos and Brand -->
+    <div class="w-1/3 bg-blue-900 flex flex-col items-center justify-center p-8 text-white flex-shrink-0">
+        <div class="bg-white p-4 rounded-md shadow-lg mb-6">
+            <!-- JoSAA Logo -->
+            <img src="https://placehold.co/120x120/0a0a2a/FFFFFF?text=JoSAA" alt="JoSAA Logo" class="h-auto w-auto">
+        </div>
+        <div class="bg-white p-3 rounded-md shadow-lg flex items-center flex-col text-center">
+            <!-- Counselling Services Logo -->
+            <img src="https://placehold.co/60x60/dc2626/FFFFFF?text=C" alt="Counseling Services Logo" class="h-auto w-auto mb-2">
+            <span class="text-gray-800 text-sm font-semibold">Counselling Services</span>
+            <span class="text-gray-600 text-xs mt-1">Simplifying The Admission Process</span>
+        </div>
+    </div>
+
+    <!-- Right Section: Sign-in Form -->
+    <div class="w-2/3 flex items-center justify-center p-8 flex-grow">
+        <div class="bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+            <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">JoSAA 2025 - Registered Candidate Sign in</h1>
+
+            <form id="login-form">
+                <div class="mb-5">
+                    <label for="jee-app-number" class="block text-gray-700 text-sm font-semibold mb-2">JEE (Main) 2025 Application Number</label>
+                    <input type="text" id="jee-app-number" placeholder="JEE (Main) Application Number" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                </div>
+
+                <div class="mb-5">
+                    <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+                    <div class="relative">
+                        <input type="password" id="password" placeholder="Password" class="w-full p-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                        <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 cursor-pointer text-xl font-bold">?</span>
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <label for="security-pin-input" class="block text-gray-700 text-sm font-semibold mb-2">Security Pin (Case Sensitive)</label>
+                    <input type="text" id="security-pin-input" placeholder="Security Pin" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                </div>
+
+                <div class="mb-5">
+                    <div class="flex items-center mb-3">
+                        <input type="radio" id="image-captcha" name="captcha-type" value="image" class="form-radio text-blue-600 h-4 w-4" checked disabled>
+                        <label for="image-captcha" class="ml-2 text-gray-700 text-sm">Image Captcha</label>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <canvas id="captcha-canvas" width="120" height="40" class="rounded-md border border-gray-300"></canvas>
+                        <!-- Refresh Icon (SVG) -->
+                        <svg id="refresh-captcha" class="refresh-icon h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 0012 4.002a8.001 8.001 0 00-7.568 12.06A8.001 8.001 0 0012 20h.002c-.015-.002-.029-.004-.044-.006a8.003 8.003 0 00-6.006-2.905l-4.141 1.159V20a2 2 0 002 2h14a2 2 0 002-2v-5h-.582" />
+                        </svg>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-700 text-white p-3 rounded-md font-semibold hover:bg-blue-800 transition-colors shadow-md">Login</button>
+
+                <p class="text-center mt-4 text-sm">
+                    <a href="javascript:void(0)" class="text-blue-600 hover:underline">Forgot Password ?</a>
+                </p>
+            </form>
+
+            <details class="mt-6 border-t border-gray-200 pt-4">
+                <summary class="cursor-pointer text-gray-700 font-semibold text-sm flex justify-between items-center">
+                    Important Instructions for Security
+                    <svg class="w-5 h-5 text-gray-500 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </summary>
+                <div class="mt-3 text-sm text-gray-600">
+                    <ul class="list-disc list-inside space-y-1">
+                        <li>Do not share your application number or password with anyone.</li>
+                        <li>Always log out after completing your session.</li>
+                        <li>Be wary of phishing attempts and suspicious links.</li>
+                        <li>Use a strong, unique password.</li>
+                        <li>Contact support if you notice any unusual activity on your account.</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+    </div>
+
+    <script>
+        let currentCaptchaText = '';
+
+        // Function to show a custom alert message
+        function showAlert(message, type = 'error') {
+            const alertBox = document.getElementById('custom-alert');
+            alertBox.textContent = message;
+            alertBox.className = 'custom-alert show'; // Reset classes and show
+            if (type === 'error') {
+                alertBox.style.backgroundColor = '#f8d7da';
+                alertBox.style.color = '#721c24';
+                alertBox.style.borderColor = '#f5c6cb';
+            } else if (type === 'success') {
+                alertBox.style.backgroundColor = '#d4edda';
+                alertBox.style.color = '#155724';
+                alertBox.style.borderColor = '#c3e6cb';
+            }
+            setTimeout(() => {
+                alertBox.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Function to generate random captcha string
+        function generateRandomString(length) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        // Function to draw captcha on canvas
+        function drawCaptcha() {
+            const canvas = document.getElementById('captcha-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            currentCaptchaText = generateRandomString(6); // Generate 6-character captcha
+
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Set background color for captcha
+            ctx.fillStyle = '#f9f9f9';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Add more random lines (strikes)
+            for (let i = 0; i < 10; i++) { // Increased number of lines
+                ctx.strokeStyle = `rgba(0,0,0,${Math.random() * 0.4 + 0.1})`; // Slightly more opaque
+                ctx.lineWidth = Math.random() * 1.5 + 0.5; // Vary line width
+                ctx.beginPath();
+                ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                ctx.stroke();
+            }
+
+            // Add some random dots
+            for (let i = 0; i < 30; i++) { // Increased number of dots
+                ctx.fillStyle = `rgba(0,0,0,${Math.random() * 0.6 + 0.2})`; // More opaque dots
+                ctx.beginPath();
+                ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, 1.8, 0, Math.PI * 2); // Larger dots
+                ctx.fill();
+            }
+
+            // Draw text
+            ctx.font = 'bold 26px Arial'; // Slightly larger font
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            const brickyRed = '#8B0000'; // Define a "bricky red" color
+
+            for (let i = 0; i < currentCaptchaText.length; i++) {
+                const char = currentCaptchaText[i];
+                ctx.fillStyle = brickyRed; // Set text color to bricky red
+                ctx.save();
+                ctx.translate(20 + i * 15 + Math.random() * 5, canvas.height / 2 + (Math.random() - 0.5) * 8); // More random offset
+                ctx.rotate((Math.random() - 0.5) * 0.4); // More random rotation
+                ctx.fillText(char, 0, 0);
+                ctx.restore();
+            }
+        }
+
+        // Initial drawing of captcha on login page load
+        drawCaptcha();
+
+        // Event listener for refreshing captcha
+        document.getElementById('refresh-captcha').addEventListener('click', drawCaptcha);
+
+        // Event listener for login form submission
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const appNumber = document.getElementById('jee-app-number').value;
+            const password = document.getElementById('password').value;
+            const securityPinInput = document.getElementById('security-pin-input').value;
+
+            const correctAppNumber = '250310124114';
+            const correctPassword = 'raghu9502';
+            
+            // Validate credentials
+            if (appNumber === correctAppNumber && password === correctPassword && securityPinInput.toLowerCase() === currentCaptchaText.toLowerCase()) {
+                showAlert('Login Successful! Redirecting...', 'success');
+                // Redirect to index.html
+                window.location.href = 'index.html'; 
+            } else {
+                showAlert('Invalid Application Number, Password, or Security Pin. Please try again.', 'error');
+                drawCaptcha(); // Regenerate captcha on failed login
+            }
+        });
+    </script>
+</body>
+</html>
