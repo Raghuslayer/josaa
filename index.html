@@ -233,7 +233,7 @@
             if (appNumber === correctAppNumber && password === correctPassword && securityPinInput.toLowerCase() === currentCaptchaText.toLowerCase()) {
                 showAlert('Login Successful! Redirecting...', 'success');
                 // Redirect to index.html
-                window.location.href = 'index.html'; 
+                window.location.href = 'main.html'; 
             } else {
                 showAlert('Invalid Application Number, Password, or Security Pin. Please try again.', 'error');
                 drawCaptcha(); // Regenerate captcha on failed login
