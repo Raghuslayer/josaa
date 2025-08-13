@@ -268,90 +268,10 @@
                         <p class="text-sm text-gray-600">Unfilled Choices</p>
                         <p class="text-3xl font-bold text-red-800">400</p>
                         <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 400</p>
-                    </div>
-                    <div class="bg-gray-300 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
-                        <p class="text-sm text-gray-600">Choice Locking Status</p>
-                        <p class="text-xl font-bold text-gray-800 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> System Locked</p>
-                    </div>
-                </div>
-
-                <div class="bg-blue-50 p-4 rounded-lg flex items-start space-x-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <div>
-                        <p class="font-semibold text-blue-700">Important Advice :</p>
-                        <p class="text-sm text-blue-700">You are advised to fill up only those choices which you would indeed like to accept and join, if offered. Mindful choice filling will help you to avoid any unnecessary hassle of withdrawing from JoSAA 2025. This will also help the system to reduce seat vacancies.</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Confirmation Modal -->
-    <div id="confirmationModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" id="closeModalButton">&times;</span>
-            <h3 class="text-xl font-bold mb-4 text-red-600">Confirm Seat Revocation</h3>
-            <p class="mb-4 text-gray-700">Are you sure you want to revoke your allotted seat? This action is irreversible and will result in the forfeiture of your seat.</p>
-            <p class="mb-6 text-gray-700 font-semibold">A refund of ₹25,000 will be processed, but note that the seat will be permanently relinquished.</p>
-            <div class="flex justify-center space-x-4">
-                <button id="confirmRevokeBtn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors">
-                    Yes, Revoke Seat
-                </button>
-                <button id="cancelRevokeBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md shadow-md transition-colors">
-                    Cancel
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mainContentArea = document.getElementById('main-content-area');
-            const seatAllotmentLink = document.getElementById('seat-allotment-result-link');
-            const viewContactDetailsLink = document.getElementById('view-contact-details-link');
-            const homeLink = document.getElementById('home-link');
-            const seatRevokingLink = document.getElementById('seat-revoking-link');
-            const officialCallLetterLink = document.getElementById('official-call-letter-link');
-
-            const confirmationModal = document.getElementById('confirmationModal');
-            const closeModalButton = document.getElementById('closeModalButton');
-            const confirmRevokeBtn = document.getElementById('confirmRevokeBtn');
-            const cancelRevokeBtn = document.getElementById('cancelRevokeBtn');
-
-            // Function to display the initial dashboard content (re-renders elements that need real-time updates)
-            function displayInitialDashboard() {
-                mainContentArea.innerHTML = `
-                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-                        <div class="flex justify-between items-center mb-4">
-                            <p class="text-sm text-gray-600">Your current session will be expired within : <span id="session-expiration" class="font-semibold text-red-500"></span></p>
-                            <p class="text-sm text-gray-600">JEE (Main) Application Number : 250310124114</p>
-                        </div>
-
-                        <h2 class="text-lg font-semibold mb-4 border-b-2 pb-2">Current Choice Filling & Locking Status</h2>
-
-                        <div class="flex justify-end text-sm text-gray-600 mb-4">
-                            Date & Time : <span id="realtime-date-time"></span>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-                            <div class="bg-blue-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
-                                <p class="text-sm text-gray-600">Total Available Choices</p>
-                                <p class="text-3xl font-bold text-blue-800">627</p>
-                                <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 627</p>
-                            </div>
-                            <div class="bg-green-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
-                                <p class="text-sm text-gray-600">Filled Choices</p>
-                                <p class="text-3xl font-bold text-green-800">227</p>
-                                <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 227</p>
-                            </div>
-                            <div class="bg-red-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
-                                <p class="text-sm text-gray-600">Unfilled Choices</p>
-                                <p class="text-3xl font-bold text-red-800">400</p>
-                                <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 400</p>
                             </div>
                             <div class="bg-gray-300 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
                                 <p class="text-sm text-gray-600">Choice Locking Status</p>
-                                <p class="text-xl font-bold text-gray-800 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> System Locked</p>
+                                <p class="text-xl font-bold text-gray-800 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 0 0110 0v2a2 0 012 2v5a2 0 01-2 2H5a2 0 01-2-2v-5a2 0 012-2zm8-2v2H7V7a3 0 016 0z" clip-rule="evenodd"/></svg> System Locked</p>
                             </div>
                         </div>
 
@@ -363,282 +283,334 @@
                             </div>
                         </div>
                     </div>
-                `;
-                // Re-get the elements after innerHTML update and start updates
-                const newRealtimeDateTimeSpan = mainContentArea.querySelector('#realtime-date-time');
-                const newSessionExpirationSpan = mainContentArea.querySelector('#session-expiration');
-                updateRealtimeClock(newRealtimeDateTimeSpan);
-                startSessionCountdown(newSessionExpirationSpan);
-            }
+                </main>
+            </div>
 
-
-            // Function to display seat allotment result content
-            function displaySeatAllotmentResult() {
-                mainContentArea.innerHTML = `
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <h2 class="text-xl font-bold mb-4">Seat Allotment Result</h2>
-                        <p class="text-lg">Congratulations! You have been provisionally allotted a seat in:</p>
-                        <p class="text-2xl font-semibold text-blue-700 mt-2">NATIONAL INSTITUTE OF TECHNOLOGY UTTARAKHAND</p>
-                        <p class="text-xl font-medium text-gray-800">(COMPUTER SCIENCE AND ENGENEERING)</p>
-                        <div class="mt-6 p-4 bg-blue-50 rounded-md">
-                            <p class="text-sm text-blue-700">Further instructions regarding document verification and admission will be shared soon.</p>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Function to display seat revoking content
-            function displaySeatRevokingContent() {
-                mainContentArea.innerHTML = `
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <h2 class="text-xl font-bold mb-4 border-b-2 pb-2">Seat Revocation Request</h2>
-                        <p class="mb-4 text-gray-700">Please select a reason for revoking your seat and confirm your request. This action is irreversible.</p>
-                        
-                        <div class="mb-6">
-                            <label for="revokeReason" class="block text-gray-700 text-sm font-bold mb-2">Reason for Revoking:</label>
-                            <select id="revokeReason" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                <option value="">-- Select a reason --</option>
-                                <option value="better_opportunity">Found a better opportunity</option>
-                                <option value="personal_reasons">Personal reasons</option>
-                                <option value="financial_constraints">Financial constraints</option>
-                                <option value="incorrect_choice">Incorrect choice filled</option>
-                                <option value="other">Other (Please specify)</option>
-                            </select>
-                        </div>
-
-                        <button id="initiateRevokeBtn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors">
-                            Initiate Seat Revocation
+            <!-- Confirmation Modal -->
+            <div id="confirmationModal" class="modal">
+                <div class="modal-content">
+                    <span class="close-button" id="closeModalButton">&times;</span>
+                    <h3 class="text-xl font-bold mb-4 text-red-600">Confirm Seat Revocation</h3>
+                    <p class="mb-4 text-gray-700">Are you sure you want to revoke your allotted seat? This action is irreversible and will result in the forfeiture of your seat.</p>
+                    <p class="mb-6 text-gray-700 font-semibold">A refund of ₹25,000 will be processed, but note that the seat will be permanently relinquished.</p>
+                    <div class="flex justify-center space-x-4">
+                        <button id="confirmRevokeBtn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors">
+                            Yes, Revoke Seat
+                        </button>
+                        <button id="cancelRevokeBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-md shadow-md transition-colors">
+                            Cancel
                         </button>
                     </div>
-                `;
+                </div>
+            </div>
 
-                document.getElementById('initiateRevokeBtn').addEventListener('click', () => {
-                    const selectedReason = document.getElementById('revokeReason').value;
-                    if (selectedReason === "") {
-                        // In a real app, you'd show a custom alert here.
-                        // For this demo, we'll just log to console.
-                        console.log("Please select a reason for revoking your seat.");
-                        return;
-                    }
-                    confirmationModal.style.display = 'flex'; // Show the modal
-                });
-            }
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+                    const mainContentArea = document.getElementById('main-content-area');
+                    const seatAllotmentLink = document.getElementById('seat-allotment-result-link');
+                    const viewContactDetailsLink = document.getElementById('view-contact-details-link');
+                    const homeLink = document.getElementById('home-link');
+                    const seatRevokingLink = document.getElementById('seat-revoking-link');
+                    const officialCallLetterLink = document.getElementById('official-call-letter-link');
 
-            // Function to handle the actual seat revocation after confirmation
-            function processSeatRevocation() {
-                mainContentArea.innerHTML = `
-                    <div class="bg-white rounded-lg shadow-md p-6 text-center">
-                        <h2 class="text-xl font-bold mb-4 text-blue-600">Processing Your Request...</h2>
-                        <p class="text-lg text-gray-700 mb-4">Please wait while your seat revocation is being processed.</p>
-                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
-                    </div>
-                `;
+                    const confirmationModal = document.getElementById('confirmationModal');
+                    const closeModalButton = document.getElementById('closeModalButton');
+                    const confirmRevokeBtn = document.getElementById('confirmRevokeBtn');
+                    const cancelRevokeBtn = document.getElementById('cancelRevokeBtn');
 
-                // Simulate an API call or processing time
-                setTimeout(() => {
-                    const refundRef = 'REF' + Math.floor(Math.random() * 1000000); // Generate a random refund reference
-                    mainContentArea.innerHTML = `
-                        <div class="bg-white rounded-lg shadow-md p-6">
-                            <h2 class="text-xl font-bold mb-4 border-b-2 pb-2">Seat Revocation Status</h2>
-                            <div class="space-y-4">
-                                <div class="bg-red-100 p-4 rounded-lg flex items-center space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2A9 9 0 111 12a9 9 0 0118 0z" />
-                                    </svg>
-                                    <div>
-                                        <p class="font-semibold text-red-700">Status: Seat Successfully Revoked</p>
-                                        <p class="text-sm text-red-700">Your allotted seat has been officially revoked from JoSAA 2025.</p>
+                    // This flag tracks if the seat has been officially revoked.
+                    let isSeatRevoked = false; 
+
+                    // Function to display the initial dashboard content (re-renders elements that need real-time updates)
+                    function displayInitialDashboard() {
+                        mainContentArea.innerHTML = `
+                            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                                <div class="flex justify-between items-center mb-4">
+                                    <p class="text-sm text-gray-600">Your current session will be expired within : <span id="session-expiration" class="font-semibold text-red-500"></span></p>
+                                    <p class="text-sm text-gray-600">JEE (Main) Application Number : 250310124114</p>
+                                </div>
+
+                                <h2 class="text-lg font-semibold mb-4 border-b-2 pb-2">Current Choice Filling & Locking Status</h2>
+
+                                <div class="flex justify-end text-sm text-gray-600 mb-4">
+                                    Date & Time : <span id="realtime-date-time"></span>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                                    <div class="bg-blue-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                        <p class="text-sm text-gray-600">Total Available Choices</p>
+                                        <p class="text-3xl font-bold text-blue-800">627</p>
+                                        <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 627</p>
+                                    </div>
+                                    <div class="bg-green-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                        <p class="text-sm text-gray-600">Filled Choices</p>
+                                        <p class="text-3xl font-bold text-green-800">227</p>
+                                        <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 227</p>
+                                    </div>
+                                    <div class="bg-red-100 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                        <p class="text-sm text-gray-600">Unfilled Choices</p>
+                                        <p class="text-3xl font-bold text-red-800">400</p>
+                                        <p class="text-xs text-gray-500 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg> 400</p>
+                                    </div>
+                                    <div class="bg-gray-300 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center">
+                                        <p class="text-sm text-gray-600">Choice Locking Status</p>
+                                        <p class="text-xl font-bold text-gray-800 flex items-center"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 0 0110 0v2a2 0 012 2v5a2 0 01-2 2H5a2 0 01-2-2v-5a2 0 012-2zm8-2v2H7V7a3 0 016 0z" clip-rule="evenodd"/></svg> System Locked</p>
                                     </div>
                                 </div>
-                                <div class="bg-green-100 p-4 rounded-lg flex items-center space-x-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                    <div>
-                                        <p class="font-semibold text-green-700">Refund Status: Processing</p>
-                                        <p class="text-sm text-green-700">A refund of ₹25,000 will be processed to your registered bank account within 3-5 business days. Your refund reference number is: <span class="font-bold">${refundRef}</span>.</p>
-                                    </div>
-                                </div>
-                                <div class="bg-blue-50 p-4 rounded-lg flex items-start space-x-3 mt-6">
+
+                                <div class="bg-blue-50 p-4 rounded-lg flex items-start space-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                     <div>
-                                        <p class="font-semibold text-blue-700">Important Note:</p>
-                                        <p class="text-sm text-blue-700">You will not be considered for any further seat allocation rounds in JoSAA 2025 after revoking your seat.</p>
+                                        <p class="font-semibold text-blue-700">Important Advice :</p>
+                                        <p class="text-sm text-blue-700">You are advised to fill up only those choices which you would indeed like to accept and join, if offered. Mindful choice filling will help you to avoid any unnecessary hassle of withdrawing from JoSAA 2025. This will also help the system to reduce seat vacancies.</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    `;
-                }, 2000); // Simulate 2 seconds of processing
-            }
-
-
-            // Function to display contact details
-            function displayContactDetails() {
-                mainContentArea.innerHTML = `
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <h2 class="text-xl font-bold mb-4">Contact Details</h2>
-                        <div class="space-y-3">
-                            <p><span class="font-semibold text-gray-700">NAME:</span> KOPPADA RAGHURAM</p>
-                            <p><span class="font-semibold text-gray-700">MOTHER:</span> KOPPADA GOWRI PARVATHI</p>
-                            <p><span class="font-semibold text-gray-700">FATHER:</span> KOPPADA SRINIVASARAO</p>
-                            <p><span class="font-semibold text-gray-700">GMAIL:</span> RAGXXXXXX@GMAIL.COM</p>
-                            <p><span class="font-semibold text-gray-700">MOBILE NO:</span> 95XXXXXX62</p>
-                            <p><span class="font-semibold text-gray-700">ADDRESS:</span> PEDAPALLEVA PALEM, MOGALTHUR, WEST GODAVARI, 534281</p>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Function to display the official call letter
-            function displayOfficialCallLetter() {
-                mainContentArea.innerHTML = `
-                    <div class="call-letter-container">
-                        <div class="call-letter-header">
-                            <img src="https://placehold.co/80x80/007bff/FFF?text=JoSAA" alt="JoSAA Logo">
-                            <div>
-                                <h1 class="text-gray-900">Joint Seat Allocation Authority 2025</h1>
-                                <p class="text-gray-700">IITs, NITs, IIEST, IIITs and Other-GFTIs for the Academic Year 2025-26</p>
-                                <h2 class="text-xl font-bold text-blue-700 mt-2">PROVISIONAL SEAT ALLOTMENT LETTER</h2>
-                            </div>
-                        </div>
-
-                        <div class="call-letter-details mb-6">
-                            <p class="text-right text-gray-600">Date: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-                            <p class="call-letter-section-title">Personal Details</p>
-                            <p><span>JEE(Main) Application Number:</span> 250310124114</p>
-                            <p><span>Candidate Name:</span> KOPPADA RAGHURAM</p>
-                            <p><span>Date of Birth:</span> January 4, 2005</p>
-                            <p><span>Gender:</span> Male</p>
-                            <p><span>State of Eligibility:</span> ANDHRA PRADESH</p>
-                            <p><span>Category:</span> OBC</p>
-                            <p><span>Person with Disability (PwD):</span> NO</p>
-                            <p><span>Nationality:</span> INDIAN</p>
-
-                            <p class="call-letter-section-title mt-6">Rank List(s)</p>
-                            <p><span>JEE(Main) 2025 Rank (OBC-NCL):</span> 12,345</p>
-                            <p><span>JEE(Main) 2025 Rank (Non-OBC-NCL):</span> 23,000</p>
-                            
-                            <p class="call-letter-section-title mt-6">Allotment Details</p>
-                            <p><span>Round No.:</span> 1</p>
-                            <p><span>Choice No.:</span> 5</p>
-                            <p><span>Institute Allotted:</span> NATIONAL INSTITUTE OF TECHNOLOGY UTTARAKHAND</p>
-                            <p><span>Academic Program Allotted:</span> COMPUTER SCIENCE AND ENGINEERING (4 Years, Bachelor of Technology)</p>
-                            <p><span>Allotted Category:</span> OPEN</p>
-                            <p><span>Allotted Quota:</span> Other State</p>
-                            <p><span>Seat Pool:</span> Gender-Neutral</p>
-                            <p><span>Allotted based on:</span> JEE(Main) 2025 Paper-1</p>
-                        </div>
-
-                        <div class="call-letter-important-note">
-                            <p class="font-semibold mb-2">Important Instructions:</p>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>This is a provisional allotment letter. Your admission is subject to successful document verification and payment of fees as per the institute's guidelines.</li>
-                                <li>You must report physically to the allotted institute on the specified dates with all original documents and photocopies as mentioned in the JoSAA 2025 Business Rules.</li>
-                                <li>Failure to comply with the reporting schedule or document requirements will lead to the cancellation of your allotted seat.</li>
-                                <li>Please regularly check the JoSAA website (josaa.nic.in) and the institute's official website for further updates and detailed admission procedures.</li>
-                                <li>A non-refundable Seat Acceptance Fee (SAF) of ₹35,000 (for General/OBC-NCL/EWS) or ₹15,000 (for SC/ST/PwD) must be paid online to confirm this provisional allotment.</li>
-                            </ul>
-                        </div>
-
-                        <div class="call-letter-footer">
-                            <p>Sincerely,</p>
-                            <p class="font-bold mt-1">Joint Seat Allocation Authority (JoSAA) 2025</p>
-                            <p>Ministry of Education, Government of India</p>
-                        </div>
-                    </div>
-                `;
-            }
-
-
-            // Function to display contact details
-            function displayContactDetails() {
-                mainContentArea.innerHTML = `
-                    <div class="bg-white rounded-lg shadow-md p-6">
-                        <h2 class="text-xl font-bold mb-4">Contact Details</h2>
-                        <div class="space-y-3">
-                            <p><span class="font-semibold text-gray-700">NAME:</span> KOPPADA RAGHURAM</p>
-                            <p><span class="font-semibold text-gray-700">MOTHER:</span> KOPPADA GOWRI PARVATHI</p>
-                            <p><span class="font-semibold text-gray-700">FATHER:</span> KOPPADA SRINIVASARAO</p>
-                            <p><span class="font-semibold text-gray-700">GMAIL:</span> RAGXXXXXX@GMAIL.COM</p>
-                            <p><span class="font-semibold text-gray-700">MOBILE NO:</span> 95XXXXXX62</p>
-                            <p><span class="font-semibold text-gray-700">ADDRESS:</span> PEDAPALLEVA PALEM, MOGALTHUR, WEST GODAVARI, 534281</p>
-                        </div>
-                    </div>
-                `;
-            }
-
-            // Event Listeners for sidebar links
-            seatAllotmentLink.addEventListener('click', displaySeatAllotmentResult);
-            viewContactDetailsLink.addEventListener('click', displayContactDetails);
-            homeLink.addEventListener('click', displayInitialDashboard);
-            seatRevokingLink.addEventListener('click', displaySeatRevokingContent);
-            officialCallLetterLink.addEventListener('click', displayOfficialCallLetter);
-
-            // Modal event listeners
-            closeModalButton.addEventListener('click', () => {
-                confirmationModal.style.display = 'none';
-            });
-            cancelRevokeBtn.addEventListener('click', () => {
-                confirmationModal.style.display = 'none';
-            });
-            confirmRevokeBtn.addEventListener('click', () => {
-                confirmationModal.style.display = 'none';
-                processSeatRevocation();
-            });
-
-            // Close modal if user clicks outside of it
-            window.addEventListener('click', (event) => {
-                if (event.target == confirmationModal) {
-                    confirmationModal.style.display = 'none';
-                }
-            });
-
-
-            // Real-time Date and Time function
-            let sessionRemainingSeconds = 19 * 60 + 27; // Initial 19 minutes 27 seconds
-
-            function updateRealtimeClock(element) {
-                if (element) {
-                    const now = new Date();
-                    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-                    element.textContent = now.toLocaleDateString('en-US', options);
-                }
-            }
-
-            // Session Expiration Countdown function
-            function startSessionCountdown(element) {
-                if (!element) return;
-
-                if (element.countdownIntervalId) {
-                    clearInterval(element.countdownIntervalId);
-                }
-
-                const countdownInterval = setInterval(() => {
-                    if (sessionRemainingSeconds <= 0) {
-                        element.textContent = "Expired!";
-                        clearInterval(countdownInterval);
-                        element.countdownIntervalId = null;
-                        return;
+                        `;
+                        // Re-get the elements after innerHTML update and start updates
+                        const newRealtimeDateTimeSpan = mainContentArea.querySelector('#realtime-date-time');
+                        const newSessionExpirationSpan = mainContentArea.querySelector('#session-expiration');
+                        updateRealtimeClock(newRealtimeDateTimeSpan);
+                        startSessionCountdown(newSessionExpirationSpan);
                     }
 
-                    sessionRemainingSeconds--;
-                    const minutes = Math.floor(sessionRemainingSeconds / 60);
-                    const seconds = sessionRemainingSeconds % 60;
-                    element.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds} minute${minutes === 0 && seconds === 1 ? '' : 's'}`;
-                }, 1000);
-                element.countdownIntervalId = countdownInterval;
-            }
 
-            // Initial setup for the dashboard content
-            displayInitialDashboard();
+                    // Function to display seat allotment result content
+                    function displaySeatAllotmentResult() {
+                        if (isSeatRevoked) {
+                            mainContentArea.innerHTML = `
+                                <div class="bg-red-50 border-l-4 border-red-500 text-red-700 p-6 rounded-lg shadow-md text-center">
+                                    <div class="flex items-center justify-center mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-red-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2A9 9 0 111 12a9 9 0 0118 0z" />
+                                        </svg>
+                                        <h2 class="text-2xl font-bold">Seat Allotment Status: <span class="uppercase">Revoked & Cancelled</span></h2>
+                                    </div>
+                                    <p class="text-lg mb-2">Your provisional seat allotment for <span class="font-semibold">NATIONAL INSTITUTE OF TECHNOLOGY UTTARAKHAND (COMPUTER SCIENCE AND ENGINEERING)</span> has been **officially revoked and cancelled**.</p>
+                                    <p class="text-base text-gray-600">This action is irreversible. For comprehensive details regarding the revocation process and refund status, please refer to the **Seat Revoking** section.</p>
+                                </div>
+                            `;
+                        } else {
+                            mainContentArea.innerHTML = `
+                                <div class="bg-white rounded-lg shadow-md p-6">
+                                    <h2 class="text-xl font-bold mb-4">Seat Allotment Result</h2>
+                                    <p class="text-lg">Congratulations! You have been provisionally allotted a seat in:</p>
+                                    <p class="text-2xl font-semibold text-blue-700 mt-2">NATIONAL INSTITUTE OF TECHNOLOGY UTTARAKHAND</p>
+                                    <p class="text-xl font-medium text-gray-800">(COMPUTER SCIENCE AND ENGENEERING)</p>
+                                    <div class="mt-6 p-4 bg-blue-50 rounded-md">
+                                        <p class="text-sm text-blue-700">Further instructions regarding document verification and admission will be shared soon.</p>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
 
-            // Set up interval for the clock initially.
-            setInterval(() => {
-                const currentRealtimeSpan = document.getElementById('realtime-date-time');
-                updateRealtimeClock(currentRealtimeSpan);
-            }, 1000);
-        });
-    </script>
+                    // Function to display seat revoking content directly with validation status
+                    function displaySeatRevokingContent() {
+                        const refundRef = 'REF' + Math.floor(Math.random() * 1000000); // Generate a random refund reference
+                        mainContentArea.innerHTML = `
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <h2 class="text-xl font-bold mb-4 border-b-2 pb-2">Seat Revocation Status</h2>
+                                <div class="space-y-4">
+                                    <!-- Step 1: Revocation Submitted -->
+                                    <div id="status-submitted" class="bg-blue-100 p-4 rounded-lg flex items-center space-x-3">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold text-blue-700">Status: Revocation Request Submitted</p>
+                                            <p class="text-sm text-blue-700">Your request to revoke the seat has been successfully submitted.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 2: Validated -->
+                                    <div id="status-validated" class="bg-green-100 p-4 rounded-lg flex items-center space-x-3 mt-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold text-green-700">Status: Request Validated</p>
+                                            <p class="text-sm text-green-700">Your revocation request has been validated and approved.</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Step 3: Refunded -->
+                                    <div id="status-refunded" class="bg-purple-100 p-4 rounded-lg flex items-center space-x-3 mt-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                                        </svg>
+                                        <div>
+                                            <p class="font-semibold text-purple-700">Initial Payment (₹25,000) Successfully Refunded</p>
+                                            <p class="text-sm text-purple-700">A refund of ₹25,000 has been successfully processed to your registered bank account. Your refund reference number is: <span class="font-bold">${refundRef}</span>. Please allow 3-5 business days for the amount to reflect in your account.</p>
+                                        </div>
+                                    </div>
+                                    <div class="bg-blue-50 p-4 rounded-lg flex items-start space-x-3 mt-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        <div>
+                                            <p class="font-semibold text-blue-700">Important Note:</p>
+                                            <p class="text-sm text-blue-700">You will not be considered for any further seat allocation rounds in JoSAA 2025 after revoking your seat.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        isSeatRevoked = true; // Set the flag to true when this content is displayed
+                    }
+
+                    // No longer needed since displaySeatRevokingContent will show the final status directly
+                    // function processSeatRevocation() {
+                    //     // This function is now effectively merged into displaySeatRevokingContent
+                    // }
+
+                    // Function to display contact details
+                    function displayContactDetails() {
+                        mainContentArea.innerHTML = `
+                            <div class="bg-white rounded-lg shadow-md p-6">
+                                <h2 class="text-xl font-bold mb-4">Contact Details</h2>
+                                <div class="space-y-3">
+                                    <p><span class="font-semibold text-gray-700">NAME:</span> KOPPADA RAGHURAM</p>
+                                    <p><span class="font-semibold text-gray-700">MOTHER:</span> KOPPADA GOWRI PARVATHI</p>
+                                    <p><span class="font-semibold text-gray-700">FATHER:</span> KOPPADA SRINIVASARAO</p>
+                                    <p><span class="font-semibold text-gray-700">GMAIL:</span> RAGXXXXXX@GMAIL.COM</p>
+                                    <p><span class="font-semibold text-gray-700">MOBILE NO:</span> 95XXXXXX62</p>
+                                    <p><span class="font-semibold text-gray-700">ADDRESS:</span> PEDAPALLEVA PALEM, MOGALTHUR, WEST GODAVARI, 534281</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // Function to display the official call letter
+                    function displayOfficialCallLetter() {
+                        mainContentArea.innerHTML = `
+                            <div class="call-letter-container">
+                                <div class="call-letter-header">
+                                    <img src="https://placehold.co/80x80/007bff/FFF?text=JoSAA" alt="JoSAA Logo">
+                                    <div>
+                                        <h1 class="text-gray-900">Joint Seat Allocation Authority 2025</h1>
+                                        <p class="text-gray-700">IITs, NITs, IIEST, IIITs and Other-GFTIs for the Academic Year 2025-26</p>
+                                        <h2 class="text-xl font-bold text-blue-700 mt-2">PROVISIONAL SEAT ALLOTMENT LETTER</h2>
+                                    </div>
+                                </div>
+
+                                <div class="call-letter-details mb-6">
+                                    <p class="text-right text-gray-600">Date: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                                    <p class="call-letter-section-title">Personal Details</p>
+                                    <p><span>JEE(Main) Application Number:</span> 250310124114</p>
+                                    <p><span>Candidate Name:</span> KOPPADA RAGHURAM</p>
+                                    <p><span>Date of Birth:</span> January 4, 2005</p>
+                                    <p><span>Gender:</span> Male</p>
+                                    <p><span>State of Eligibility:</span> ANDHRA PRADESH</p>
+                                    <p><span>Category:</span> OBC</p>
+                                    <p><span>Person with Disability (PwD):</span> NO</p>
+                                    <p><span>Nationality:</span> INDIAN</p>
+
+                                    <p class="call-letter-section-title mt-6">Rank List(s)</p>
+                                    <p><span>JEE(Main) 2025 Rank (OBC-NCL):</span> 12,345</p>
+                                    <p><span>JEE(Main) 2025 Rank (Non-OBC-NCL):</span> 23,000</p>
+                                    
+                                    <p class="call-letter-section-title mt-6">Allotment Details</p>
+                                    <p><span>Round No.:</span> 1</p>
+                                    <p><span>Choice No.:</span> 5</p>
+                                    <p><span>Institute Allotted:</span> NATIONAL INSTITUTE OF TECHNOLOGY UTTARAKHAND</p>
+                                    <p><span>Academic Program Allotted:</span> COMPUTER SCIENCE AND ENGINEERING (4 Years, Bachelor of Technology)</p>
+                                    <p><span>Allotted Category:</span> OPEN</p>
+                                    <p><span>Allotted Quota:</span> Other State</p>
+                                    <p><span>Seat Pool:</span> Gender-Neutral</p>
+                                    <p><span>Allotted based on:</span> JEE(Main) 2025 Paper-1</p>
+                                </div>
+
+                                <div class="call-letter-important-note">
+                                    <p class="font-semibold mb-2">Important Instructions:</p>
+                                    <ul class="list-disc list-inside space-y-1">
+                                        <li>This is a provisional allotment letter. Your admission is subject to successful document verification and payment of fees as per the institute's guidelines.</li>
+                                        <li>You must report physically to the allotted institute on the specified dates with all original documents and photocopies as mentioned in the JoSAA 2025 Business Rules.</li>
+                                        <li>Failure to comply with the reporting schedule or document requirements will lead to the cancellation of your allotted seat.</li>
+                                        <li>Please regularly check the JoSAA website (josaa.nic.in) and the institute's official website for further updates and detailed admission procedures.</li>
+                                        <li>A non-refundable Seat Acceptance Fee (SAF) of ₹35,000 (for General/OBC-NCL/EWS) or ₹15,000 (for SC/ST/PwD) must be paid online to confirm this provisional allotment.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="call-letter-footer">
+                                    <p>Sincerely,</p>
+                                    <p class="font-bold mt-1">Joint Seat Allocation Authority (JoSAA) 2025</p>
+                                    <p>Ministry of Education, Government of India</p>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+
+                    // Event Listeners for sidebar links
+                    seatAllotmentLink.addEventListener('click', displaySeatAllotmentResult);
+                    viewContactDetailsLink.addEventListener('click', displayContactDetails);
+                    homeLink.addEventListener('click', displayInitialDashboard);
+                    seatRevokingLink.addEventListener('click', displaySeatRevokingContent); // This will now directly show the status
+                    officialCallLetterLink.addEventListener('click', displayOfficialCallLetter);
+
+                    // Modal event listeners (these will effectively be unused since displaySeatRevokingContent will not trigger the modal directly anymore)
+                    closeModalButton.addEventListener('click', () => {
+                        confirmationModal.style.display = 'none';
+                    });
+                    cancelRevokeBtn.addEventListener('click', () => {
+                        confirmationModal.style.display = 'none';
+                    });
+                    confirmRevokeBtn.addEventListener('click', () => {
+                        confirmationModal.style.display = 'none';
+                        // processSeatRevocation(); // No longer calling this directly from modal
+                    });
+
+                    // Close modal if user clicks outside of it
+                    window.addEventListener('click', (event) => {
+                        if (event.target == confirmationModal) {
+                            confirmationModal.style.display = 'none';
+                        }
+                    });
+
+
+                    // Real-time Date and Time function
+                    let sessionRemainingSeconds = 19 * 60 + 27; // Initial 19 minutes 27 seconds
+
+                    function updateRealtimeClock(element) {
+                        if (element) {
+                            const now = new Date();
+                            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                            element.textContent = now.toLocaleDateString('en-US', options);
+                        }
+                    }
+
+                    // Session Expiration Countdown function
+                    function startSessionCountdown(element) {
+                        if (!element) return;
+
+                        if (element.countdownIntervalId) {
+                            clearInterval(element.countdownIntervalId);
+                        }
+
+                        const countdownInterval = setInterval(() => {
+                            if (sessionRemainingSeconds <= 0) {
+                                element.textContent = "Expired!";
+                                clearInterval(countdownInterval);
+                                element.countdownIntervalId = null;
+                                return;
+                            }
+
+                            sessionRemainingSeconds--;
+                            const minutes = Math.floor(sessionRemainingSeconds / 60);
+                            const seconds = sessionRemainingSeconds % 60;
+                            element.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds} minute${minutes === 0 && seconds === 1 ? '' : 's'}`;
+                        }, 1000);
+                        element.countdownIntervalId = countdownInterval;
+                    }
+
+                    // Initial setup for the dashboard content
+                    displayInitialDashboard();
+
+                    // Set up interval for the clock initially.
+                    setInterval(() => {
+                        const currentRealtimeSpan = document.getElementById('realtime-date-time');
+                        updateRealtimeClock(currentRealtimeSpan);
+                    }, 1000);
+                });
+            </script>
 </body>
 </html>
